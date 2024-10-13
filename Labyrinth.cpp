@@ -17,7 +17,7 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
     std::string part = moves.substr(counter +1);
     //'moves(counter)' represents the cell we are currently in,
     //'part' contains the part of the moves string that we still need to check 
-    isPathToFreedom(moves(counter), part);
+    isPathToFreedom(moves[counter], part);
   }
   
    

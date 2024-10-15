@@ -20,6 +20,10 @@ struct MazeCell {
     MazeCell* west;
 };
 
+bool checkPath(MazeCell* v,int GotSpellbook, int GotPotion, int GotWand );
+
+bool gotAllItems(int GotSpellbook, int GotPotion, int GotWand);
+
 /**
  * Given a location in a maze, returns whether the given sequence of
  * steps will let you escape the maze.

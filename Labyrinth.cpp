@@ -1,24 +1,48 @@
 #include "Labyrinth.h"
 
 bool isPathToFreedom(MazeCell* start, const std::string& moves) {
-  //string looks like NSWE, and our pointers are named north,south,east,west. I'm trying to link them here so the function knows that if the string is N, it needs to check if a north pointer is null. This might be wrong bc they might already be linked, or bc this is incorrect syntax. 
-  N = north;
-  S = south;
-  E = east;
-  W = west;
-  //std::string nope = "This path is illegal ;
+    (void) start;
+    (void) moves;
+    int GotSpellbook=0;
+    int GotPotion=0;
+    int GotWand=0;
 
-  if (start == nullptr)
-    return "This path is illegal";
+    if (checkPath(start, GotSpellbook, GotPotion, GotWand)) {
+        for (int i=0; i<moves.size()-1; i++) {
+            if (moves[i] == 'N');
+            checkPath(start->north,GotSpellbook,GotPotion,GotWand);
+            if (moves[i] == 'S');
+            checkPath(start->south,GotSpellbook,GotPotion,GotWand);
+            if (moves[i] == 'E');
+            checkPath(start->east,GotSpellbook,GotPotion,GotWand);
+            if (moves[i] == 'W');
+            checkPath(start->west,GotSpellbook,GotPotion,GotWand);
+        }
+    }
+}
 
-  else {
-    counter += 1; //counts how many cells we have passed through 
-    //since moves is const, not sure if i can break this into a substr here and be able to pass it in 
-    std::string part = moves.substr(counter +1);
-    //'moves(counter)' represents the cell we are currently in,
-    //'part' contains the part of the moves string that we still need to check 
-    isPathToFreedom(moves[counter], part);
-  }
-  
-   
+bool checkPath(MazeCell* v,int GotSpellbook, int GotPotion, int GotWand ) {
+
+    if(v==nullptr) {
+        return false;
+    }
+    if (v->whatsHere == Item::SPELLBOOK) {
+        GotSpellbook=1;
+    }
+    if(v->whatsHere == Item::POTION) {
+        GotPotion=1;
+    }
+    if(v->whatsHere == Item::WAND) {
+        GotWand=1;
+    }
+}
+
+bool gotAllItems(int GotSpellbook, int GotPotion, int GotWand) {
+    if(GotSpellbook + GotPotion +GotWand!=3) {
+        return false;
+        //if return false we have not collected all items
+    }
+    if (GotSpellbook + GotPotion + GotWand==3) {
+        return true;
+    }
 }

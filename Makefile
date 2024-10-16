@@ -1,6 +1,6 @@
 CXX = g++
 OBJECTS = MazeGenerator.o Labyrinth.o Main.o
-FLAGS = -std=c++20
+#FLAGS = -std=c++2a
 SOURCE = $(wildcard *.cpp)
 
 demo: $(OBJECTS)
@@ -16,6 +16,10 @@ run: demo
 
 echo:
 	echo $(SOURCE)
+
+debug:
+	g++ MazeGenerator.cpp Labyrinth.cpp Main.cpp -o demo -g
+	gdb demo
 
 clean: 
 	rm -f *.o demo

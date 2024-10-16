@@ -20,7 +20,7 @@ struct MazeCell {
     MazeCell* west;
 };
 
-bool checkPath(MazeCell* v,int GotSpellbook, int GotPotion, int GotWand );
+void checkPath(MazeCell* v,int& GotSpellbook, int& GotPotion, int& GotWand );
 
 bool gotAllItems(int GotSpellbook, int GotPotion, int GotWand);
 
